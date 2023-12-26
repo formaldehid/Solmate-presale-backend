@@ -12,7 +12,7 @@ import logger from "./utils/logger";
 import { PORT_NUMBER } from "./config";
 import { PRESALE_PRICE, TOTAL_SUPPLY } from './constants';
 
-const routes = require("./services/routes.js");
+const routes = require("./services/routes");
 
 
 async function main() {
