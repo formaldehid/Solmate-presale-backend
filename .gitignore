@@ -14,3 +14,9 @@ ormconfig.prod.json
 /src/index.ts
 
 .env
+
+# local sqlite DB
+/local.sqlite
+
+# IDE
+.idea

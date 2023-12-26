@@ -10,15 +10,24 @@ dotenv.config({
 
 import logger from "./utils/logger";
 import { PORT_NUMBER } from "./config";
-const  { router } = require("./services");
+import { PRESALE_PRICE, TOTAL_SUPPLY } from './constants';
+
+const routes = require("./services/routes.js");
 
 
-// create express app
-const app = express();
-app.use(bodyParser.json());
-app.use(cors());
-app.set('/', router);
+async function main() {
+    await createConnection();
 
-app.listen(PORT_NUMBER);
+    // create express app
+    const app = express();
+    app.use(bodyParser.json());
+    app.use(cors());
+    app.use('/', routes);
 
-console.log(`Solmate Presale API has started on ${PORT_NUMBER} port.`);
+    app.listen(PORT_NUMBER, () => {
+        console.log(`Solmate Presale API has started on ${PORT_NUMBER} port.`);
+    });
+}
+
+main()
+    .catch(console.error)
